@@ -4,19 +4,20 @@ set_xmakever("2.8.2")
 -- includes (need xmake.lua file in the same directory)
 includes("lib/commonlibsse")
 includes("extern/styyx-utils")
+includes("extern/clib-util")
 
 -- set up for project
 
-local mod_name = "MOD"
+local mod_name = "styyx-move-speed"
 
 set_project(mod_name)
 set_version("1.0.0")
-set_license("MIT")
+set_license("GPL-3.0")
 
 -- language and warnings
 set_languages("c++23")
 set_warnings("allextra")
-
+add_defines("NOMINMAX", "UNICODE")
 -- xmake rules
 add_rules("mode.debug", "mode.releasedbg")
 set_defaultmode("releasedbg")
@@ -28,11 +29,16 @@ includes("xmake-rules.lua")
 set_config("skyrim_ae",true)
 set_config("rex_toml", true)
 set_config("use-hook-utils", true)
+set_config("use-fuck", true)
+add_requires("glaze")
+
 
 -- add plugin target
 target(mod_name)
     add_deps("commonlibsse", {public = true})
     add_deps("styyx-util", {public = true})
+    add_deps("clib-util", {public = true})
+    add_packages("glaze")
 
     if has_config("skyrim_ae") then
         set_targetdir("build/AE/skse/plugins")

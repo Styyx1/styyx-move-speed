@@ -1,0 +1,5 @@
+[General]
+fSpeedMultSnow = 0.5
+fSpeedMultGrass = 0.9
+fSpeedMultRoad = 5.0
+fSpeedMultMud = 0.3

@@ -4,3 +4,6 @@
 [submodule "lib/commonlibsse"]
 	path = lib/commonlibsse
 	url = https://github.com/powerof3/CommonLibSSE
+[submodule "extern/clib-util"]
+	path = extern/clib-util
+	url = git@github.com:powerof3/ClibUtil.git

@@ -1,9 +1,9 @@
 #include "config.h"
 
-void MOD::CONFIG::UpdateSetting(bool a_save)
+void SPEED::CONFIG::UpdateSetting(bool a_save)
 {
-    const auto toml = REX::TOML::SettingStore::GetSingleton();
-    toml->Init("Data/SKSE/Plugins/MOD.toml", "Data/SKSE/Plugins/MOD_custom.toml");
+    const auto toml = REX::Singleton<REX::TOML::SettingStore>::GetSingleton();
+    toml->Init("Data/SKSE/Plugins/speed.toml", "Data/SKSE/Plugins/speed_custom.toml");
 
     if (!a_save)
     {

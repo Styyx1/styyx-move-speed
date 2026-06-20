@@ -3,10 +3,13 @@
 
 #include "REX/REX/TOML.h"
 
-namespace MOD::CONFIG
+namespace SPEED::CONFIG
 {
-inline REX::TOML::Bool bExampleBool{"General", "bExampleBool", false};
-inline REX::TOML::F32 fExampleFloat{"General", "fExampleFloat", 1.0f};
+
+inline REX::TOML::F64 speed_mult_road{"General", "fSpeedMultRoad", 1.5};
+inline REX::TOML::F64 speed_mult_snow{"General", "fSpeedMultSnow", 0.5};
+inline REX::TOML::F64 speed_mult_mud{"General", "fSpeedMultMud", 0.3};
+inline REX::TOML::F64 speed_mult_grass{"General", "fSpeedMultGrass", 0.9};
 
 void UpdateSetting(bool a_save = false);
-} // namespace MOD::CONFIG
+} // namespace SPEED::CONFIG

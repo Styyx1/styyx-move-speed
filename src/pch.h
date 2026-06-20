@@ -1,9 +1,14 @@
 #pragma once
+
 #include <RE/Skyrim.h>
 
 #include <SKSE/SKSE.h>
 
+#include <CLIBUtil/utils.hpp>
 #include <styyx-utils.h>
+
+using namespace clib_util;
+
 
 using namespace StyyxUtil;
 using namespace std::literals;

@@ -1,23 +1,24 @@
 #include "hooks.h"
 
+#include "speed-calcs.h"
 #include "st-hooks.h"
 
-namespace MOD
+namespace SPEED
 {
-
-
-void ExampleHook::Call()
-{
-    func();
-}
 
 void InstallHooks()
-{ // WriteCall5 example:
-    // HookUtils::WriteCall5<ExampleHook>(REL_ID(0, 0), OFFSET(0, 0));
-
-    // WriteVFunc example:
-    // HookUtils::WriteVFunc<RE::SomeClass, 0, 0x00, ExampleHook>();
-
+{
+    // move speed function (speed scales with height in vanilla)
+    // SE ID found in blade and blunt
+    HookUtils::WriteCall5<MoveSpeedScaleHook>(RELOCATION_ID(37013, 37943), OFFSET(0x1A, 0x51));
     logs::info("Hooks installed.");
 }
-} // namespace MOD
+
+float MoveSpeedScaleHook::Call(RE::TESObjectREFR* a_ref)
+{
+    float original = func(a_ref);
+
+    float modifier = SpeedHelper::GetTerrainModifier(a_ref);
+    return original * modifier;
+}
+} // namespace SPEED
