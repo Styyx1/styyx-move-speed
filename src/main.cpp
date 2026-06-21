@@ -1,5 +1,3 @@
-#include "SKSE/API.h"
-#include "SKSE/Interfaces.h"
 #include "configs/config.h"
 #include "formloader.h"
 #include "hooks/hooks.h"

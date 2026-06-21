@@ -74,7 +74,7 @@ void MENU::Speedy::DrawSpeedySpeed()
 {
 
     auto md = REX::Singleton<MenuDefines>::GetSingleton();
-
+    FUCK::Indent();
     FUCKUtil::SliderFloat(md->m_RoadSpeed.c_str(), _speedRoad, CONFIG::speed_mult_road, 0.1, 5.0,
                           md->m_RoadSpeedHelp.c_str());
     FUCKUtil::SliderFloat(md->m_SnowSpeed.c_str(), _speedSnow, CONFIG::speed_mult_snow, 0.1, 5.0,
@@ -83,6 +83,7 @@ void MENU::Speedy::DrawSpeedySpeed()
                           md->m_MudSpeedHelp.c_str());
     FUCKUtil::SliderFloat(md->m_GrassSpeed.c_str(), _speedGrass, CONFIG::speed_mult_grass, 0.1, 5.0,
                           md->m_GrassSpeedHelp.c_str());
+    FUCK::Unindent();
 }
 
 

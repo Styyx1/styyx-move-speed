@@ -22,6 +22,12 @@ float SPEED::SpeedHelper::GetTerrainModifier(RE::TESObjectREFR* a_ref)
         return 1;
     }
 
+    if (!a_ref->IsHumanoid())
+    {
+        return 1;
+    }
+
+
     if (InOnWayStatic(a_ref))
     {
         return SPEED::CONFIG::speed_mult_road.GetValue();

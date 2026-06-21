@@ -5,6 +5,9 @@
 #include <optional>
 #include <st-forms.h>
 
+#include "CLIBUtil/editorID.hpp"
+#include "configs/config.h"
+
 
 namespace SPEED
 {
@@ -42,7 +45,11 @@ void FormLoader::CombineFormlists()
                 if (auto stat = a_formInList->As<RE::TESObjectSTAT>(); stat)
                 {
                     m_allRoads.insert(stat);
-                    logs::info("added {} to vector", stat->GetFormID());
+                    if (CONFIG::enable_debug_logs.GetValue())
+                    {
+                        logs::info("added {} to vector", editorID::get_editorID(stat));
+                    }
+
                     return RE::BSContainer::ForEachResult::kContinue;
                 }
             }
@@ -133,7 +140,10 @@ void JsonLoader::AddToSet(RE::TESObjectSTAT* a_stat)
         return;
     }
     FormLoader::m_allRoads.insert(a_stat);
-    logs::info("added {} from json", editorID::get_editorID(a_stat));
+    if (CONFIG::enable_debug_logs.GetValue())
+    {
+        logs::info("added {} from json", editorID::get_editorID(a_stat));
+    }
 }
 void JsonLoader::AddToRoadSet(RE::TESLandTexture* a_landscape)
 {
@@ -143,6 +153,9 @@ void JsonLoader::AddToRoadSet(RE::TESLandTexture* a_landscape)
         return;
     }
     FormLoader::m_allLandscapes.insert(a_landscape);
-    logs::info("added {} from json", editorID::get_editorID(a_landscape));
+    if (CONFIG::enable_debug_logs.GetValue())
+    {
+        logs::info("added {} from json", editorID::get_editorID(a_landscape));
+    }
 };
 } // namespace SPEED
