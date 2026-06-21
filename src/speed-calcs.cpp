@@ -53,7 +53,11 @@ float SPEED::SpeedHelper::GetTerrainModifier(RE::TESObjectREFR* a_ref)
 
     auto type = mato->materialID;
 
-    ResetAndSetGlobals(type);
+    if (a_ref->IsPlayerRef())
+    {
+        ResetAndSetGlobals(type);
+    }
+
 
     switch (type)
     {
