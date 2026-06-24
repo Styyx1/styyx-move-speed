@@ -215,22 +215,9 @@ void SPEED::SpeedHelper::DeactivateAllGLOB()
     DeactivateGlobal(FormLoader::m_onSandGlobal);
     DeactivateGlobal(FormLoader::m_onMudGlobal);
 }
-RE::TESObjectREFR* SPEED::SpeedHelper::GetObjectUnderFeet(const RE::Actor* a_actor)
-{
 
-    if (!a_actor)
-    {
-        return nullptr;
-    }
-
-    const auto charController = a_actor->GetCharController();
-    const auto supportBody    = charController ? charController->supportBody : nullptr;
-
-    return supportBody ? supportBody->GetUserData() : nullptr;
-}
 bool SPEED::SpeedHelper::IsOnPreferredPath(RE::Actor* a_actor)
 {
-
     auto ref = a_actor->AsReference();
     if (!ref || !ref->Is3DLoaded() || ref->IsDead())
     {

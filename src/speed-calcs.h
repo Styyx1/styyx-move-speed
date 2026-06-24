@@ -24,7 +24,6 @@ struct SpeedHelper
     static void HandleSandGLOB();
     static void HandleWaterGLOB();
     static void DeactivateAllGLOB();
-    static RE::TESObjectREFR* GetObjectUnderFeet(const RE::Actor* a_actor);
     static bool IsOnPreferredPath(RE::Actor* a_actor);
 };
 } // namespace SPEED
