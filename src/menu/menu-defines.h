@@ -15,16 +15,22 @@ void RegisterMenu();
 // TODO: think of better way to do that than this
 struct MenuDefines : REX::Singleton<MenuDefines>
 {
-    std::string m_ModName    = "$SPEEDNAME"_T;
-    std::string m_RoadSpeed  = "$ROADSPEEDSETTING"_T;
-    std::string m_MudSpeed   = "$MUDSPEEDSETTING"_T;
-    std::string m_SnowSpeed  = "$SNOWSPEEDSETTING"_T;
-    std::string m_GrassSpeed = "$GRASSSPEEDSETTING"_T;
+    std::string m_ModName         = "$SPEEDNAME"_T;
+    std::string m_RoadSpeed       = "$ROADSPEEDSETTING"_T;
+    std::string m_MudSpeed        = "$MUDSPEEDSETTING"_T;
+    std::string m_SnowSpeed       = "$SNOWSPEEDSETTING"_T;
+    std::string m_GrassSpeed      = "$GRASSSPEEDSETTING"_T;
+    std::string m_SandSpeed       = "$SANDSPEEDSETTING"_T;
+    std::string m_enableNPCRoads  = "$ENABLEROADNPCSETTING"_T;
+    std::string m_enableWaterSlow = "$ENABLEWATERSLOWDOWN"_T;
 
-    std::string m_RoadSpeedHelp  = "$HELP_ROAD"_T;
-    std::string m_MudSpeedHelp   = "$HELP_MUD"_T;
-    std::string m_SnowSpeedHelp  = "$HELP_SNOW"_T;
-    std::string m_GrassSpeedHelp = "$HELP_GRASS"_T;
+    std::string m_RoadSpeedHelp   = "$HELP_ROAD"_T;
+    std::string m_MudSpeedHelp    = "$HELP_MUD"_T;
+    std::string m_SnowSpeedHelp   = "$HELP_SNOW"_T;
+    std::string m_GrassSpeedHelp  = "$HELP_GRASS"_T;
+    std::string m_SandSpeedHelp   = "$HELP_SAND"_T;
+    std::string m_enableNPCHelp   = "$HELP_ENABLENPCROADS"_T;
+    std::string m_enableWaterHelp = "$HELP_ENABLEWATERSPEED"_T;
 };
 
 struct Speedy : FUCK::ITool
@@ -45,6 +51,9 @@ struct Speedy : FUCK::ITool
     float _speedMud{};
     float _speedSnow{};
     float _speedGrass{};
+    float _speedSand{};
+    bool _enableNPC{};
+    bool _enableWater{};
 };
 inline Speedy g_speedyTool;
 

@@ -6,6 +6,7 @@
 #include <st-forms.h>
 
 #include "CLIBUtil/editorID.hpp"
+#include "RE/T/TESGlobal.h"
 #include "configs/config.h"
 
 
@@ -20,6 +21,9 @@ void FormLoader::LoadForms()
     m_onRoadGlobal     = dh->LookupForm<RE::TESGlobal>(ON_ROAD_GLOBAL, MOD_NAME);
     m_onMudGlobal      = dh->LookupForm<RE::TESGlobal>(ON_MUD_GLOBAL, MOD_NAME);
     m_onSnowGlobal     = dh->LookupForm<RE::TESGlobal>(ON_SNOW_GLOBAL, MOD_NAME);
+    m_inGrassGlobal    = dh->LookupForm<RE::TESGlobal>(ON_GRASS_GLOBAL, MOD_NAME);
+    m_onSandGlobal     = dh->LookupForm<RE::TESGlobal>(ON_SAND_GLOBAL, MOD_NAME);
+    m_inWaterGlobal    = dh->LookupForm<RE::TESGlobal>(IN_WATER_GLOBAL, MOD_NAME);
 
     if (!MiscUtil::IsModLoaded(MOD_NAME))
     {
