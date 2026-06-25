@@ -28,6 +28,7 @@ float SPEED::SpeedHelper::GetTerrainModifier(RE::TESObjectREFR* a_ref)
     }
 
     // after road check to have horses benefit from road modifiers
+    // don't want wolves to be slower in grass, they're made for that shit
     if (!a_ref->IsHumanoid())
     {
         return 1;
@@ -59,18 +60,22 @@ float SPEED::SpeedHelper::GetTerrainModifier(RE::TESObjectREFR* a_ref)
         ResetAndSetGlobals(type);
     }
 
+    // simlar idea to Loki's wade in water
+    // completely different execution
+    // much simpler. basically up to 80(ish)% speed reduction
+    // TODO: test with 1.2, 1.0 and 1.3. 1.1 seems good so far
+    constexpr float START_VALUE_WATER = 1.1;
     auto sub =
         CONFIG::slow_in_water.GetValue() ? a_ref->GetSubmergeLevel(a_ref->GetPositionZ(), a_ref->GetParentCell()) : -1;
 
 
     if (sub > 0)
     {
-        logs::info("submerged level is: {}", sub);
         auto actor = a_ref->As<RE::Actor>();
 
         if (actor && !actor->IsSwimming() && sub > 0.3)
         {
-            return 1.1 - sub;
+            return START_VALUE_WATER - sub;
         }
     }
 
@@ -102,7 +107,7 @@ bool SPEED::SpeedHelper::InOnWayStatic(RE::TESObjectREFR* a_ref)
         return false;
     }
     auto ret = IsOnPreferredPath(actor);
-    if (a_ref->IsPlayerRef())
+    if (a_ref->IsPlayerRef() && ret)
     {
         HandleRoadGLOB();
     }

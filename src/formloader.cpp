@@ -32,10 +32,10 @@ void FormLoader::LoadForms()
 
     if (m_allRoadsFromList)
     {
-        CombineFormlists();
+        // CombineFormlists();
     }
 
-    JsonLoader::LoadPatchesJSONFolder();
+    // JsonLoader::LoadPatchesJSONFolder();
 }
 void FormLoader::CombineFormlists()
 {
